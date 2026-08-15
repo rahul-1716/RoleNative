@@ -4,6 +4,7 @@ import {
   generateInterviewReport,
   getAllInterviewReports,
   getInterviewById,
+  getResumePdf,
 } from "../services/interview.api";
 import { useEffect } from "react";
 
@@ -65,13 +66,34 @@ export const useInterview = (interviewId) => {
       setLoading(false);
     }
   };
-    useEffect(() => {
-        if (interviewId) {
-            getReportById(interviewId)
-        } else {
-            getReports()
-        }
-    }, [ interviewId ])
+
+  const downloadResumePdf = async (interviewReportId) => {
+    setLoading(true);
+    try {
+      const blob = await getResumePdf(interviewReportId);
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `resume_${interviewReportId}.pdf`;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      console.log(error);
+      throw error;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (interviewId) {
+      getReportById(interviewId);
+    } else {
+      getReports();
+    }
+  }, [interviewId]);
 
   return {
     loading,
@@ -80,5 +102,6 @@ export const useInterview = (interviewId) => {
     getReportById,
     getReports,
     generateReport,
+    downloadResumePdf,
   };
 };
