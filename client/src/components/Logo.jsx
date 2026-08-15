@@ -17,7 +17,7 @@ const Logo = ({ light = false, size = "md" }) => {
       <span
         className={`text-xl font-bold tracking-tight ${light ? "text-white" : "text-slate-900 dark:text-white"}`}
       >
-        Talent<span className="text-brand-600">Edge</span>
+        Role<span className="text-brand-600">Native</span>
       </span>
     </div>
   );

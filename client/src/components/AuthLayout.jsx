@@ -6,7 +6,15 @@ const FEATURES = [
     title: "Tailored to your profile",
     text: "Reports built from your resume, self-description, and the target job description.",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="h-5 w-5"
+      >
         <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4-6.2-4.3-6.2 4.3 2.4-7.4L2 9.4h7.6z" />
       </svg>
     ),
@@ -15,7 +23,15 @@ const FEATURES = [
     title: "Real interview questions",
     text: "Technical and behavioral questions with the intent behind them and model answers.",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="h-5 w-5"
+      >
         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
       </svg>
     ),
@@ -24,7 +40,15 @@ const FEATURES = [
     title: "Structured roadmap",
     text: "A practical day-by-day plan to close skill gaps before your interview.",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="h-5 w-5"
+      >
         <path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" />
       </svg>
     ),
@@ -46,7 +70,8 @@ const AuthLayout = ({ title, subtitle, children }) => {
             Walk out confident.
           </h2>
           <p className="mt-3 max-w-md text-base text-slate-400">
-            Interview preparation reports generated from your actual profile and the role you're targeting.
+            Interview preparation reports generated from your actual profile and
+            the role you're targeting.
           </p>
 
           <ul className="mt-10 space-y-6">
@@ -65,7 +90,7 @@ const AuthLayout = ({ title, subtitle, children }) => {
         </div>
 
         <p className="text-xs text-slate-500">
-          © {new Date().getFullYear()} TalentEdge. All rights reserved.
+          © {new Date().getFullYear()} RoleNative. All rights reserved.
         </p>
       </aside>
 
@@ -74,8 +99,14 @@ const AuthLayout = ({ title, subtitle, children }) => {
           <div className="mb-8 flex items-center justify-between lg:hidden">
             <Logo />
           </div>
-          <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">{title}</h1>
-          {subtitle && <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">{subtitle}</p>}
+          <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+            {title}
+          </h1>
+          {subtitle && (
+            <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
+              {subtitle}
+            </p>
+          )}
           <div className="mt-8">{children}</div>
         </div>
       </main>

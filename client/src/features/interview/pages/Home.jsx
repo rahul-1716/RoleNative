@@ -54,10 +54,18 @@ const Home = () => {
     }
     setGenerating(true);
     try {
-      const data = await generateReport({ jobDescription, selfDescription, resumeFile });
+      const data = await generateReport({
+        jobDescription,
+        selfDescription,
+        resumeFile,
+      });
       navigate(`/interview/${data._id}`);
     } catch (err) {
-      setError(err?.response?.data?.error || err?.message || "Failed to generate the report. Please try again.");
+      setError(
+        err?.response?.data?.error ||
+          err?.message ||
+          "Failed to generate the report. Please try again.",
+      );
     } finally {
       setGenerating(false);
     }
@@ -93,8 +101,9 @@ const Home = () => {
             <span className="text-brand-600">custom interview plan</span>
           </h1>
           <p className="mt-3 text-base leading-relaxed text-slate-500 dark:text-slate-400">
-            Let our AI analyze the job requirements and your unique profile to build a
-            winning interview strategy — questions, model answers, and a day-by-day roadmap.
+            Let our AI analyze the job requirements and your unique profile to
+            build a winning interview strategy — questions, model answers, and a
+            day-by-day roadmap.
           </p>
         </section>
 
@@ -125,7 +134,9 @@ const Home = () => {
 
             {/* Right — Profile */}
             <div className="p-6 md:p-8">
-              <h2 className="text-base font-semibold text-slate-900 dark:text-white">Your Profile</h2>
+              <h2 className="text-base font-semibold text-slate-900 dark:text-white">
+                Your Profile
+              </h2>
 
               {/* Resume upload */}
               <div className="mt-4">
@@ -139,7 +150,15 @@ const Home = () => {
                   htmlFor="resume"
                   className="mt-2 flex cursor-pointer flex-col items-center justify-center gap-1 rounded-xl border-2 border-dashed border-slate-300 bg-slate-50 px-6 py-8 text-center transition hover:border-brand-400 hover:bg-brand-50/40 dark:border-slate-700 dark:bg-slate-800/50 dark:hover:border-brand-500 dark:hover:bg-brand-900/20"
                 >
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-7 w-7 text-slate-400 dark:text-slate-500">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-7 w-7 text-slate-400 dark:text-slate-500"
+                  >
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                     <polyline points="17 8 12 3 7 8" />
                     <line x1="12" y1="3" x2="12" y2="15" />
@@ -147,7 +166,9 @@ const Home = () => {
                   <span className="text-sm font-medium text-slate-600 dark:text-slate-300">
                     Click to upload or drag &amp; drop
                   </span>
-                  <span className="text-xs text-slate-400 dark:text-slate-500">PDF or DOCX (Max 5MB)</span>
+                  <span className="text-xs text-slate-400 dark:text-slate-500">
+                    PDF or DOCX (Max 5MB)
+                  </span>
                   <input
                     ref={resumeInputRef}
                     hidden
@@ -176,7 +197,10 @@ const Home = () => {
 
               {/* Self description */}
               <div>
-                <label htmlFor="selfDescription" className="block text-sm font-medium text-slate-700 dark:text-slate-300">
+                <label
+                  htmlFor="selfDescription"
+                  className="block text-sm font-medium text-slate-700 dark:text-slate-300"
+                >
                   Quick Self-Description
                 </label>
                 <textarea
@@ -189,12 +213,21 @@ const Home = () => {
               </div>
 
               <p className="mt-4 flex items-start gap-2 rounded-lg bg-amber-50 p-3 text-xs leading-relaxed text-amber-800 dark:bg-amber-950/40 dark:text-amber-300">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mt-0.5 h-4 w-4 shrink-0">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="mt-0.5 h-4 w-4 shrink-0"
+                >
                   <circle cx="12" cy="12" r="10" />
                   <line x1="12" y1="8" x2="12" y2="12" />
                   <line x1="12" y1="16" x2="12.01" y2="16" />
                 </svg>
-                Either a resume or a self-description is required to generate a personalized plan.
+                Either a resume or a self-description is required to generate a
+                personalized plan.
               </p>
             </div>
           </div>
@@ -217,14 +250,29 @@ const Home = () => {
               >
                 {generating ? (
                   <>
-                    <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4 animate-spin" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      className="h-4 w-4 animate-spin"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                    >
                       <path d="M21 12a9 9 0 1 1-6.219-8.56" />
                     </svg>
                     Generating...
                   </>
                 ) : (
                   <>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="h-4 w-4"
+                    >
                       <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z" />
                     </svg>
                     Generate My Interview Strategy
@@ -238,7 +286,9 @@ const Home = () => {
         {/* Recent reports */}
         {reports.length > 0 && (
           <section className="mt-12">
-            <h2 className="text-lg font-semibold text-slate-900 dark:text-white">Recent Plans</h2>
+            <h2 className="text-lg font-semibold text-slate-900 dark:text-white">
+              Recent Plans
+            </h2>
             <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {reports.map((report) => (
                 <li
@@ -279,8 +329,8 @@ const Home = () => {
             Get in touch
           </h2>
           <p className="mt-2 max-w-xl text-sm text-slate-500 dark:text-slate-400">
-            Questions about this project or want to collaborate? Find me on LinkedIn or
-            check out my other work on GitHub.
+            Questions about this project or want to collaborate? Find me on
+            LinkedIn or check out my other work on GitHub.
           </p>
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
             {CONTACT_LINKS.map((link) => (
@@ -295,8 +345,12 @@ const Home = () => {
                   {link.icon}
                 </span>
                 <div>
-                  <p className="text-sm font-semibold text-slate-900 dark:text-white">{link.label}</p>
-                  <p className="text-sm text-slate-500 dark:text-slate-400">{link.handle}</p>
+                  <p className="text-sm font-semibold text-slate-900 dark:text-white">
+                    {link.label}
+                  </p>
+                  <p className="text-sm text-slate-500 dark:text-slate-400">
+                    {link.handle}
+                  </p>
                 </div>
               </a>
             ))}
@@ -306,11 +360,26 @@ const Home = () => {
 
       <footer className="border-t border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 py-6 text-xs text-slate-400 sm:flex-row sm:px-6 dark:text-slate-500">
-          <p>© {new Date().getFullYear()} TalentEdge. Built with care.</p>
+          <p>© {new Date().getFullYear()} RoleNative. Built with care.</p>
           <div className="flex gap-6">
-            <a href="#" className="transition hover:text-slate-600 dark:hover:text-slate-300">Privacy Policy</a>
-            <a href="#" className="transition hover:text-slate-600 dark:hover:text-slate-300">Terms of Service</a>
-            <a href="#" className="transition hover:text-slate-600 dark:hover:text-slate-300">Help Center</a>
+            <a
+              href="#"
+              className="transition hover:text-slate-600 dark:hover:text-slate-300"
+            >
+              Privacy Policy
+            </a>
+            <a
+              href="#"
+              className="transition hover:text-slate-600 dark:hover:text-slate-300"
+            >
+              Terms of Service
+            </a>
+            <a
+              href="#"
+              className="transition hover:text-slate-600 dark:hover:text-slate-300"
+            >
+              Help Center
+            </a>
           </div>
         </div>
       </footer>

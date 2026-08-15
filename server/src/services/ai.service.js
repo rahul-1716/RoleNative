@@ -152,7 +152,9 @@ Requirements:
 }
 
 export async function generatePdfFromHtml(htmlContent) {
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+  });
   const page = await browser.newPage();
   await page.setContent(htmlContent, { waitUntil: "networkidle0" });
 
@@ -169,26 +171,6 @@ export async function generatePdfFromHtml(htmlContent) {
   await browser.close();
   return pdfBuffer;
 }
-
-export const getResumePdf = async (interviewReportId) => {
-  setLoading(true);
-  let response = null;
-  try {
-    response = await generateResumePdf({ interviewReportId });
-    const url = window.URL.createObjectURL(
-      new Blob([response], { type: "application/pdf" }),
-    );
-    const link = document.createElement("a");
-    link.href = url;
-    link.setAttribute("download", `resume_${interviewReportId}.pdf`);
-    document.body.appendChild(link);
-    link.click();
-  } catch (error) {
-    console.log(error);
-  } finally {
-    setLoading(false);
-  }
-};
 
 export async function generateResumePdf({
   resume,
